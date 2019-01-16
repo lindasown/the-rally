@@ -1,0 +1,90 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="https://www.nai-nami.com/wp-content/themes/wp-nainami-theme/plugins/jqueryui/jquery-ui.css">			
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://www.nai-nami.com/wp-content/themes/wp-nainami-theme/plugins/jqueryui/jquery-ui.js"></script>
+
+	<script src="actions.js"></script>
+	<script src="board.js"></script>
+	<script src="robot.js"></script>
+
+	<script>
+		$(function() {
+			
+			var board = new BOARD();
+			var robot = new ROBOT();
+			var actions = new ACTIONS();
+
+			console.log(actions);
+
+			board.init();
+			robot.init();
+			actions.init();
+		});
+	</script>
+</head>
+<body>
+
+
+	<div id="playboard">
+	</div>
+
+</body>
+
+
+
+<style>
+
+#playboard {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto auto; 
+	grid-gap: 1px 1px;
+	height: 500px;
+	width: 500px;
+	
+}
+
+.robot {
+	border-radius: 50%;
+	width: 100%;
+	border: 2px solid black;
+	box-sizing: inline-block;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	transition: transform 0.5s;
+}
+
+.robot::after {
+	content: '';
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 30px solid black;
+	position:absolute; 
+}
+
+.field {
+	background: lightgrey;
+	display: flex;
+}
+
+.robot[direction="1"] {
+	transform: rotate(0deg);
+}
+
+.robot[direction="2"] {
+	transform: rotate(90deg);
+}
+
+.robot[direction="3"] {
+	transform: rotate(180deg);
+}
+
+.robot[direction="4"] {
+	transform: rotate(270deg);
+}
+
+
+
+</style>
